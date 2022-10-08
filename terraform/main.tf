@@ -1,8 +1,8 @@
 terraform {
   required_providers {
         azurerm = {
-            ssource = "hashicorp/azurerm"
-            vversion = "3.17.0"
+            source = "hashicorp/azurerm"
+            version = "3.17.0"
         }
   }
 }
@@ -12,6 +12,9 @@ provider "azurerm" {
     tenant_id = "31357d13-e2bc-4d89-a7ae-6f584dd0a700"
     client_id = "5a4aa718-47aa-41ae-b0b9-0b0db47fdec1"
     client_secret = "lnq8Q~DAgvl~sBXyhM55djSIOP73WCd6YmiNncvc"
+    features {
+      
+    }
   
 }
 
@@ -59,6 +62,16 @@ resource "azurerm_mssql_database" "kkrappdb" {
   max_size_gb    = 2
   sku_name       = "Basic"
   depends_on = [
-    azurerm_mysql_server.sqlserver45678345
+    azurerm_mssql_server.sqlserver45678345
   ]
 }
+
+/*
+Command to Execute terraform
+terraform init
+terraform plan -out main.tfplan
+terraform apply "main.tfplan"
+terraform destroy
+
+
+*/
